@@ -31,4 +31,21 @@ post '/visit' do
   @barber = params[:barber]
   @color = params[:color]
 
+  new_client = Client.new({:name => @username,
+                           :phone => @phone,
+                           :datestamp => @datetime,
+                           :barber => @barber,
+                           :color => @color
+  })
+  new_client.save
+  erb "#{@username} Вы были успешно записаны на время #{@datetime}"
+end
+
+get '/contacts' do
+  erb :contacts
+end
+
+post '/contacts' do
+  @email = params[:email]
+
 end
