@@ -11,6 +11,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
   @list_barbers = Barber.all
 end
@@ -31,11 +34,12 @@ post '/visit' do
   @barber = params[:barber]
   @color = params[:color]
 
-  new_client = Client.new({:name => @username,
-                           :phone => @phone,
-                           :datestamp => @datetime,
-                           :barber => @barber,
-                           :color => @color
+  new_client = Client.new({
+    :name => @username,
+    :phone => @phone,
+    :datestamp => @datetime,
+    :barber => @barber,
+    :color => @color
   })
   new_client.save
   erb "#{@username} Вы были успешно записаны на время #{@datetime}"
@@ -47,5 +51,11 @@ end
 
 post '/contacts' do
   @email = params[:email]
-
+  @comments = params[:comments]
+  new_comment = Contact.new({
+    :email => @email,
+    :comment => @comments
+  })
+  new_comment.save
+  erb "Ваш запрос был успешно обработан #{@email}"
 end
