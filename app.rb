@@ -74,3 +74,7 @@ post '/contacts' do
   new_comment.save
   erb "Ваш запрос был успешно обработан #{@email}"
 end
+
+get "/barber/:id" do
+  erb :barber
+end
