@@ -5,19 +5,19 @@
 
   <div class="form-group">
     <label>Ваше имя</label>
-    <input name="username" type="text" class="form-control" placeholder="Ваше имя" value="<%=@username%>">
+    <input name="client[name]" type="text" class="form-control" placeholder="Ваше имя" value="">
   </div>
 
   <div class="form-group">
     <label>Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" placeholder="Ваш телефон" value="<%=@phone%>">
+    <input name="client[phone]" type="text" class="form-control" placeholder="Ваш телефон" value="">
   </div>
 
   <div class="form-group">
     <label>Когда вас ждать?</label>
-    <input id="datetimepicker" name="datetime" type="text" class="form-control" placeholder="Введите дату и время" value="<%=@datetime%>">
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" placeholder="Введите дату и время" value="">
   </div>
-
+<!--
   <div class="form-group">
     <label>Выбор парикмахера</label>
     <select name="barber" class="form-control" aria-label=".form-select-sm example">
@@ -26,10 +26,10 @@
       <% end %>
     </select>
   </div>
-
+-->
   <div class="form-group">
     <label>Выберите цвет:</label>
-    <select id="colorpicker" name="color">
+    <select id="colorpicker" name="client[color]">
       <option value="#7bd148">Green</option>
       <option value="#5484ed">Bold blue</option>
       <option value="#a4bdfc">Blue</option>

@@ -28,6 +28,10 @@ get '/visit' do
 end
 
 post '/visit' do
+
+  new_client = Client.new params[:client]
+  new_client.save
+=begin
   @username = params[:username]
   @phone = params[:phone]
   @datetime = params[:datetime]
@@ -42,6 +46,7 @@ post '/visit' do
     :color => @color
   })
   new_client.save
+=end
   erb "#{@username} Вы были успешно записаны на время #{@datetime}"
 end
 
