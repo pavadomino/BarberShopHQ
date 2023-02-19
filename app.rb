@@ -37,7 +37,8 @@ post '/visit' do
   if new_client.save
     erb "<h2>Спасибо Вы записались!</h2>"
   else
-    erb "<h2>Error</h2>"
+    @error = new_client.errors.full_messages.first
+    erb :visit
   end
 
 =begin
