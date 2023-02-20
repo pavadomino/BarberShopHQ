@@ -16,6 +16,8 @@ class Barber < ActiveRecord::Base
 end
 
 class Contact < ActiveRecord::Base
+  validates :email, presence: true
+  validates :comment, presence: true
 end
 
 before do
@@ -61,10 +63,20 @@ post '/visit' do
 end
 
 get '/contacts' do
+  @contact = Contact.new
   erb :contacts
 end
 
 post '/contacts' do
+  @contact = Contact.new params[:contact]
+  if @contact.save
+    erb "<h2>Ваше сообщение было принято!</h2>"
+  else
+    @error = @contact.errors.full_messages.first
+    erb :contacts
+  end
+
+=begin
   @email = params[:email]
   @comments = params[:comments]
   new_comment = Contact.new({
@@ -73,6 +85,7 @@ post '/contacts' do
   })
   new_comment.save
   erb "Ваш запрос был успешно обработан #{@email}"
+=end
 end
 
 get "/barber/:id" do
